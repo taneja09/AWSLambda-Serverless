@@ -35,7 +35,7 @@ jobs:
             pwd
             ls -al
             cd serverless
-            zip -r lambdaFunction.zip index.js AWSConfiguration/
+            zip -r -D lambdaFunction.zip index.js AWSConfiguration/
             aws s3 cp lambdaFunction.zip s3://${code_deploy_bucket} --region ${aws_region}
             echo "Hello"
 workflows:
