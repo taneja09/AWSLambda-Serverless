@@ -18,7 +18,7 @@ exports.handler = (event, context, callback)=>{
     const emailAddress = messageObj.email;
     const UserId = messageObj.ownerId;
 
-    console.log(emailAddress + " " + UserId);
+    //console.log(emailAddress + " " + UserId);
 
     const emailParams = {
         Source: "ses-smtp-user.20200329-025853@dev.divyataneja.me",
