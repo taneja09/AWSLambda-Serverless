@@ -38,13 +38,8 @@ jobs:
             zip -r lambdaFunction.zip index.js AWSConfiguration/
             aws s3 cp lambdaFunction.zip s3://${code_deploy_bucket} --region ${aws_region}
             echo "Hello"
-
-
 workflows:
   version: 2
-  pr-check:
-    jobs:
-    - pr_check
   build_deploy:
     jobs:
     - build_deploy:
