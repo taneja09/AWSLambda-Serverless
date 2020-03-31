@@ -40,7 +40,6 @@ jobs:
             echo "Hello"
             aws deploy create-deployment --application-name BillDuesApp \
             --deployment-group-name knlklambda \
-            --ignore-application-stop-failures \
             --s3-location bucket=${code_deploy_bucket},bundleType=YAML,key=lambdaFunction.zip
 workflows:
   version: 2
