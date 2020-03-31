@@ -6,4 +6,5 @@ Resources:
         Name: "HandleUserBillRequests"
         Alias: "BillFunction"
         CurrentVersion: "6"
-- BeforeAllowTraffic: "runhook"
+Hooks:
+  - BeforeAllowTraffic: "runhook"
