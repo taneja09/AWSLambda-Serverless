@@ -4,5 +4,6 @@ Resources:
       Type: AWS::Lambda::Function
       Properties:
         Name: "HandleUserBillRequests"
-        CurrentVersion: "1.0.0"
-        TargetVersion: "1.0.0" 
+        Alias: "BillFunction"
+        CurrentVersion: "2"
+        TargetVersion: "3"

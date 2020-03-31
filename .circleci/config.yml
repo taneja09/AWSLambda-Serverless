@@ -38,9 +38,9 @@ jobs:
             zip -r lambdaFunction.zip appspec.yml index.js AWSConfiguration/
             aws s3 cp lambdaFunction.zip s3://${code_deploy_bucket} --region ${aws_region}
             echo "Hello"
-            aws deploy create-deployment --application-name BillDuesApp \
+            aws deploy create-deployment --application-name LambdaCodeDeployGroupName \
             --deployment-group-name knlklambda \
-            --s3-location bucket=${code_deploy_bucket},bundleType=YAML,key=lambdaFunction.zip
+            --s3-location bucket=${code_deploy_bucket},bundleType=zip,key=lambdaFunction.zip
 workflows:
   version: 2
   build_deploy:
