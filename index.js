@@ -19,6 +19,7 @@ exports.handler = (event, context, callback)=>{
     const UserId = messageObj.ownerId;
 
     //console.log(emailAddress + " " + UserId);
+    console.log("myhook code");
 
     const emailParams = {
         Source: "ses-smtp-user.20200329-025853@dev.divyataneja.me",
