@@ -1,0 +1,8 @@
+version: 0.0
+Resources:
+  - HandleUserBillRequests:
+      Type: AWS::Lambda::Function
+      Properties:
+        Name: "HandleUserBillRequests"
+        CurrentVersion: "1.0.0"
+        TargetVersion: "1.0.0" 
