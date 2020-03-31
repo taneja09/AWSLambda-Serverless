@@ -5,5 +5,5 @@ Resources:
       Properties:
         Name: "HandleUserBillRequests"
         Alias: "BillFunction"
-        CurrentVersion: "2"
-        TargetVersion: "3"
+        CurrentVersion: "6"
+- BeforeAllowTraffic: "runhook"
