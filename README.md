@@ -11,6 +11,6 @@ _Usage_:
 **How to update Lambda function**
 
 `aws lambda update-function-code --function-name  HandleUserBillRequests \`
-`--s3-bucket codedeploy.divyataneja.me --s3-key  lambdaFunction.zip --publish true`
+`--s3-bucket S3_Bucket --s3-key  S3KeyZip`
 
 Lambda Handler Definition - `index.handler`
