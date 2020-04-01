@@ -35,12 +35,9 @@ jobs:
             pwd
             ls -al
             cd serverless
-            zip -r lambdaFunction.zip appspec.yml index.js AWSConfiguration/
+            zip -r lambdaFunction.zip index.js
             aws s3 cp lambdaFunction.zip s3://${code_deploy_bucket} --region ${aws_region}
             echo "Hello"
-            aws deploy create-deployment --application-name lambdaCodeDeploy \
-            --deployment-group-name LambdaCodeDeployGroupName \
-            --s3-location bucket=${code_deploy_bucket},bundleType=YAML,key=lambdaFunction.zip
 
 workflows:
   version: 2

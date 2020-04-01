@@ -1,34 +1,30 @@
 'use strict'
 const AWS = require('aws-sdk');
-const envParams = require('./AWSConfiguration/aws-config');
-
-AWS.config.update({
-    region: envParams.REGION,
-    accessKeyId : envParams.accessKeyId,
-    secretAccessKey :envParams.secretAccessKey
-});
+const REGION = 'us-east-1';
 
 const ses = new AWS.SES();
-const documentClient = new AWS.DynamoDB.DocumentClient({region: envParams.REGION});
+const documentClient = new AWS.DynamoDB.DocumentClient({region: REGION});
 
 exports.handler = (event, context, callback)=>{
     const message = event.Records[0].Sns.Message;
     const messageObj = JSON.parse(message);
-    const messageData = JSON.stringify(messageObj.data);
+    const NoDataMessage = "You don't have any Bills Due. Please take some action. Thank You";
+    const WithdataMessage = "You have following Bills Due: \n\n" + JSON.stringify(messageObj.data);
+    const messageData =  messageObj.data.length > 0 ? WithdataMessage : NoDataMessage;
     const emailAddress = messageObj.email;
     const UserId = messageObj.ownerId;
-
-    //console.log(emailAddress + " " + UserId);
-    console.log("myhook code");
+    const SourceEmail = messageObj.domain;
 
     const emailParams = {
-        Source: "ses-smtp-user.20200329-025853@dev.divyataneja.me",
+        Source: SourceEmail,
         Destination: {
             ToAddresses: [emailAddress]
         },
         Message: {
             Body: {
-                Text: { Data: messageData
+                Text: { 
+                    
+                    Data: messageData
                 } 
             },
             Subject: { Data: "Bills Due"   
