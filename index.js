@@ -8,8 +8,8 @@ const documentClient = new AWS.DynamoDB.DocumentClient({region: REGION});
 exports.handler = (event, context, callback)=>{
     const message = event.Records[0].Sns.Message;
     const messageObj = JSON.parse(message);
-    const NoDataMessage = "You don't have any Bills Due. Please take some action. Thank You";
-    const WithdataMessage = "You have following Bills Due: \n\n" + JSON.stringify(messageObj.data);
+    const NoDataMessage = "You don't have any Bills Due. Thank You";
+    const WithdataMessage = "You have following Bills Due. Please take some action. \n\n" + JSON.stringify(messageObj.data);
     const messageData =  messageObj.data.length > 0 ? WithdataMessage : NoDataMessage;
     const emailAddress = messageObj.email;
     const UserId = messageObj.ownerId;
